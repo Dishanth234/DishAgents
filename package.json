@@ -1,0 +1,12 @@
+{
+  "name": "dish-agents",
+  "version": "1.0.0",
+  "description": "A family of desktop pets that live on top of every app on your Mac",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^33.0.0"
+  }
+}
