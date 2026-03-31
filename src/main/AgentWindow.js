@@ -24,9 +24,7 @@ class AgentWindow {
       alwaysOnTop: true,
       hasShadow: false,
       skipTaskbar: true,
-      focusable: false,
-      // Do NOT use type:'panel' — panel windows are invisible without a parent on macOS
-      show: false, // show after setup to avoid flicker
+      focusable: true,
       webPreferences: {
         nodeIntegration: false,
         contextIsolation: true,
@@ -39,14 +37,8 @@ class AgentWindow {
       { query: { agentId: this.agentId } }
     );
 
-    // Show without stealing focus once page is ready
-    this.win.once('ready-to-show', () => {
-      this.win.showInactive();
-      this.win.setAlwaysOnTop(true, 'screen-saver');
-      // Appear on all virtual desktops / Spaces
-      this.win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
-    });
-
+    this.win.setAlwaysOnTop(true, 'screen-saver');
+    this.win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
     this.win.setIgnoreMouseEvents(true, { forward: true });
 
     return this;
